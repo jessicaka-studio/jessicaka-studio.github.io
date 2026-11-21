@@ -10,7 +10,7 @@ export const site = {
     '在這裡記錄長影片、短影音與圖像作品，以及創作過程中的工具與想法。',
   ],
   socials: [
-    { name: 'YouTube', url: '' },
+    { name: 'YouTube', url: 'https://www.youtube.com/@jessicakastudio' },
     { name: 'Instagram', url: '' },
     { name: 'Facebook', url: '' },
   ],
