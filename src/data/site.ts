@@ -11,7 +11,7 @@ export const site = {
   ],
   socials: [
     { name: 'YouTube', url: 'https://www.youtube.com/@jessicakastudio' },
-    { name: 'Instagram', url: '' },
+    { name: 'Instagram', url: 'https://www.instagram.com/jessicakastudio/' },
     { name: 'Facebook', url: '' },
   ],
 };
