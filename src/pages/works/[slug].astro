@@ -42,12 +42,20 @@ const canEmbed = d.platform === 'youtube' && d.youtubeId;
         <Content />
 
         {d.prompt && (<><h2>PROMPT</h2><pre>{d.prompt}</pre></>)}
-        {d.workflowUrl && <a class="btn" href={d.workflowUrl} download>下載 Workflow</a>}
-        {d.url && !canEmbed && d.platform !== 'none' && (
-          <a class="btn" href={d.url} target="_blank" rel="noopener noreferrer">
-            在 {platformName[d.platform]} 觀看
-          </a>
-        )}
+        <div class="btns">
+          {d.workflowUrl && <a class="btn" href={d.workflowUrl} download>下載 Workflow</a>}
+          {d.url && !canEmbed && d.platform !== 'none' && !d[`${d.platform}Url`] && (
+            <a class="btn" href={d.url} target="_blank" rel="noopener noreferrer">
+              在 {platformName[d.platform]} 觀看
+            </a>
+          )}
+          {d.instagramUrl && (
+            <a class="btn" href={d.instagramUrl} target="_blank" rel="noopener noreferrer">在 Instagram 觀看</a>
+          )}
+          {d.facebookUrl && (
+            <a class="btn" href={d.facebookUrl} target="_blank" rel="noopener noreferrer">在 Facebook 觀看</a>
+          )}
+        </div>
         <div><a class="back" href="/">← 回到作品</a></div>
       </div>
     </div>

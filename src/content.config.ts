@@ -13,6 +13,9 @@ const works = defineCollection({
     platform: z.enum(['youtube', 'instagram', 'facebook', 'none']).default('none'),
     // 作品原始貼文網址（IG／FB 會用它跳轉）
     url: z.string().url().optional(),
+    // 同一件作品也有發在 IG／FB 時，填這兩欄，作品頁會多出「在 Instagram／Facebook 觀看」按鈕
+    instagramUrl: z.string().url().optional(),
+    facebookUrl: z.string().url().optional(),
     // YouTube 影片 ID（網址 v= 後面那串），填了才會嵌入播放器
     youtubeId: z.string().optional(),
     // 縮圖／圖片，放在 src/assets/works/，寫成 ../../assets/works/xxx.jpg

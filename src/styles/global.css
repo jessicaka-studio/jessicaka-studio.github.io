@@ -143,3 +143,7 @@ footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.82
   .work.vertical .player { max-width: 320px; margin-inline: auto; }
   .info h1 { font-size: 1.4rem; }
 }
+
+/* 作品頁：按鈕列（Workflow／Instagram／Facebook） */
+.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.btns .btn { margin-top: 0; }
