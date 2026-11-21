@@ -71,7 +71,7 @@ img { max-width: 100%; display: block; }
   transition: transform 0.25s, border-color 0.25s;
 }
 .card:hover { transform: translateY(-3px); border-color: var(--accent); }
-.card .thumb { width: 100%; object-fit: cover; background: #1b1b1f; }
+.card .thumb { width: 100%; height: auto; object-fit: cover; background: #1b1b1f; }
 .card .meta { padding: 12px 14px 14px; }
 .card h3 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 1rem; letter-spacing: 0.04em; }
 .card .sub { margin-top: 4px; font-size: 0.78rem; color: var(--muted); display: flex; gap: 10px; }
@@ -117,3 +117,29 @@ footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.82
 .more-wrap { text-align: center; padding-bottom: 80px; margin-top: -30px; }
 .more-wrap .btn { background: transparent; cursor: pointer; font-family: inherit; margin: 0; }
 .more-wrap .btn:hover { background: var(--accent); color: var(--bg); }
+
+/* ===== 手機版：雙欄縮圖牆、縮小間距 ===== */
+@media (max-width: 640px) {
+  .wrap { width: min(1280px, 100% - 24px); }
+  .nav .wrap { height: 52px; }
+  .brand { font-size: 0.95rem; }
+  .brand span { letter-spacing: 0.1em; }
+  .hero { padding: 40px 0 20px; }
+  .hero p { margin-top: 12px; font-size: 0.9rem; }
+  .filters { gap: 8px; margin: 4px 0 18px; }
+  .filters button { padding: 6px 14px; font-size: 0.85rem; }
+
+  .grid { column-width: auto; column-count: 2; column-gap: 10px; padding-bottom: 48px; }
+  .card { margin-bottom: 10px; border-radius: 4px; }
+  .card:hover { transform: none; }
+  .card .meta { padding: 8px 10px 10px; }
+  .card h3 { font-size: 0.82rem; letter-spacing: 0.02em; }
+  .card .sub { font-size: 0.68rem; flex-wrap: wrap; gap: 0 8px; }
+  .badge { top: 6px; left: 6px; font-size: 0.62rem; padding: 1px 8px; }
+  .more-wrap { margin-top: -20px; padding-bottom: 56px; }
+
+  /* 作品頁：直式影片不要撐滿整個螢幕 */
+  .work, .work.vertical { padding: 20px 0 64px; gap: 24px; }
+  .work.vertical .player { max-width: 320px; margin-inline: auto; }
+  .info h1 { font-size: 1.4rem; }
+}
