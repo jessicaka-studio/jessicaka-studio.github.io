@@ -5,6 +5,6 @@ kind: short
 platform: none
 aspect: "1:1"
 thumb: ../../assets/works/jessicaka-001.jpg
-tools: [ACE-Step]
+tools: [ComfyUI, ACE-Step]
 public: true
 ---

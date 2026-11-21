@@ -5,6 +5,6 @@ kind: short
 platform: none
 aspect: "9:16"
 thumb: ../../assets/works/jessicaka-054.jpg
-tools: []
+tools: [ComfyUI]
 public: true
 ---

@@ -7,6 +7,6 @@ youtubeId: "ltfTtQXsI14"
 url: https://youtu.be/ltfTtQXsI14
 aspect: "16:9"
 thumb: ../../assets/works/jessicaka-057.jpg
-tools: [ACE-Step]
+tools: [ComfyUI]
 public: true
 ---
