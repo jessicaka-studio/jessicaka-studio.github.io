@@ -8,5 +8,6 @@ url: https://youtu.be/FWgL5XqfUYo
 aspect: "9:16"
 thumb: ../../assets/works/jessicaka-005.jpg
 tools: [ComfyUI, ACE-Step]
+instagramUrl: https://www.instagram.com/p/Df_04d2xocG/
 public: true
 ---
