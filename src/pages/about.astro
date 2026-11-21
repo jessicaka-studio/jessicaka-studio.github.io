@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+const socials = site.socials.filter((s) => s.url);
+---
+<Base title="關於">
+  <div class="wrap about">
+    <h1>{site.nameZh} {site.nameEn}</h1>
+    {site.about.map((p) => <p>{p}</p>)}
+    {socials.length > 0 && (
+      <div class="socials">
+        {socials.map((s) => <a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a>)}
+      </div>
+    )}
+  </div>
+</Base>

@@ -1,0 +1,55 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const works = await getCollection('works', (w) => w.data.public);
+  return works.map((w) => ({ params: { slug: w.id }, props: { work: w } }));
+}
+
+const { work } = Astro.props;
+const d = work.data;
+const { Content } = await render(work);
+
+const platformName = { youtube: 'YouTube', instagram: 'Instagram', facebook: 'Facebook', none: '' } as const;
+const vertical = d.aspect === '9:16' || d.aspect === '4:5';
+const ratio = d.aspect.replace(':', ' / ');
+const canEmbed = d.platform === 'youtube' && d.youtubeId;
+---
+<Base title={d.title} description={d.title}>
+  <div class="wrap">
+    <div class={`work ${vertical ? 'vertical' : ''}`}>
+      <div class="player" style={`aspect-ratio:${ratio}`}>
+        {canEmbed ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${d.youtubeId}`}
+            title={d.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        ) : (
+          <Image src={d.thumb} alt={d.title} widths={[800, 1600]} sizes="(max-width: 860px) 100vw, 800px" />
+        )}
+      </div>
+
+      <div class="info">
+        <h1>{d.title}</h1>
+        <div class="date">{d.date.toISOString().slice(0, 10)}</div>
+        {d.tools.length > 0 && <div class="tags">{d.tools.map((t) => <span>{t}</span>)}</div>}
+
+        <Content />
+
+        {d.prompt && (<><h2>PROMPT</h2><pre>{d.prompt}</pre></>)}
+        {d.workflowUrl && <a class="btn" href={d.workflowUrl} download>下載 Workflow</a>}
+        {d.url && !canEmbed && d.platform !== 'none' && (
+          <a class="btn" href={d.url} target="_blank" rel="noopener noreferrer">
+            在 {platformName[d.platform]} 觀看
+          </a>
+        )}
+        <div><a class="back" href="/">← 回到作品</a></div>
+      </div>
+    </div>
+  </div>
+</Base>

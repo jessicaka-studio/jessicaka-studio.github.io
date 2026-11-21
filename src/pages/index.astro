@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+// 只顯示 public: true 的作品，新的在前
+const works = (await getCollection('works', (w) => w.data.public))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const kindLabel = { long: '長影片', short: '短影音', image: '圖片' } as const;
+const ratio = (a: string) => a.replace(':', ' / ');
+---
+<Base>
+  <section class="hero wrap">
+    <h1>{site.nameZh}<small>{site.nameEn.toUpperCase()}</small></h1>
+    <p>{site.tagline}</p>
+  </section>
+
+  <div class="wrap">
+    <div class="filters" id="filters">
+      <button class="on" data-k="all">全部</button>
+      <button data-k="long">長影片</button>
+      <button data-k="short">短影音</button>
+      <button data-k="image">圖片</button>
+    </div>
+
+    {works.length === 0 ? (
+      <p class="empty">作品整理中，敬請期待。</p>
+    ) : (
+      <div class="grid" id="grid">
+        {works.map((w) => (
+          <a class="card" href={`/works/${w.id}/`} data-k={w.data.kind}>
+            <span class="badge">{kindLabel[w.data.kind]}</span>
+            <Image
+              class="thumb"
+              src={w.data.thumb}
+              alt={w.data.title}
+              widths={[400, 800]}
+              sizes="(max-width: 640px) 100vw, 400px"
+              loading="lazy"
+              style={`aspect-ratio:${ratio(w.data.aspect)}`}
+            />
+            <div class="meta">
+              <h3>{w.data.title}</h3>
+              <div class="sub">
+                <span>{w.data.date.toISOString().slice(0, 10)}</span>
+                {w.data.tools.length > 0 && <span>{w.data.tools.join(' · ')}</span>}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="more-wrap"><button id="more" class="btn" type="button">載入更多</button></div>
+    )}
+  </div>
+
+  <script is:inline>
+    // 篩選 + 「載入更多」（一次顯示 24 件）
+    const PAGE = 24;
+    const buttons = document.querySelectorAll('#filters button');
+    const cards = [...document.querySelectorAll('#grid .card')];
+    const more = document.getElementById('more');
+    let kind = 'all';
+    let shown = PAGE;
+
+    function render() {
+      let matched = 0;
+      cards.forEach((c) => {
+        const ok = kind === 'all' || c.dataset.k === kind;
+        if (ok) matched++;
+        c.style.display = ok && matched <= shown ? '' : 'none';
+      });
+      if (more) more.style.display = matched > shown ? '' : 'none';
+    }
+
+    buttons.forEach((b) =>
+      b.addEventListener('click', () => {
+        buttons.forEach((x) => x.classList.remove('on'));
+        b.classList.add('on');
+        kind = b.dataset.k;
+        shown = PAGE;
+        render();
+      })
+    );
+    if (more) more.addEventListener('click', () => { shown += PAGE; render(); });
+    render();
+  </script>
+</Base>

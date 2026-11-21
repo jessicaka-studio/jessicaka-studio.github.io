@@ -1,0 +1,37 @@
+---
+// 內嵌字體（Noto Sans TC，開源 OFL 授權），不依賴 Google 伺服器
+import '@fontsource/noto-sans-tc/chinese-traditional-400.css';
+import '@fontsource/noto-sans-tc/chinese-traditional-500.css';
+import '@fontsource/noto-sans-tc/latin-400.css';
+import '@fontsource/noto-sans-tc/latin-500.css';
+import '../styles/global.css';
+import { site } from '../data/site';
+interface Props { title?: string; description?: string }
+const { title, description = site.description } = Astro.props;
+const fullTitle = title ? `${title}｜${site.nameZh} ${site.nameEn}` : `${site.nameZh} ${site.nameEn}`;
+---
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap">
+        <a class="brand" href="/">{site.nameZh}<span>{site.nameEn.toUpperCase()}</span></a>
+        <nav class="nav-links">
+          <a href="/">作品</a>
+          <a href="/about/">關於</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+    <footer>© {new Date().getFullYear()} {site.nameZh} {site.nameEn}</footer>
+  </body>
+</html>

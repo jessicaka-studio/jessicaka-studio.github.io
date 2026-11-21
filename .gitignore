@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.astro/
+
+# 不公開的作品（含 TVBS、客戶案）放這裡，絕對不要進 Git／上線
+_private/
