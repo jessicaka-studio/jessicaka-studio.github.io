@@ -6,5 +6,6 @@ platform: none
 aspect: "4:5"
 thumb: ../../assets/works/jessicaka-042.jpg
 tools: [ComfyUI]
+instagramUrl: https://www.instagram.com/p/DgCPAu1OLwq/
 public: true
 ---
