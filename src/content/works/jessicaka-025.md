@@ -2,7 +2,9 @@
 title: "jessicaka 025"
 date: 2026-10-30
 kind: short
-platform: none
+platform: youtube
+youtubeId: "ZsZL30SosFE"
+url: https://youtu.be/ZsZL30SosFE
 aspect: "4:5"
 thumb: ../../assets/works/jessicaka-025.jpg
 tools: [ComfyUI]
