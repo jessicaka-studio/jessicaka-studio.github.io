@@ -2,7 +2,9 @@
 title: "jessicaka 032"
 date: 2026-10-30
 kind: short
-platform: none
+platform: youtube
+youtubeId: "5smtS3eqx9Q"
+url: https://youtu.be/5smtS3eqx9Q
 aspect: "4:5"
 thumb: ../../assets/works/jessicaka-032.jpg
 tools: [ComfyUI]

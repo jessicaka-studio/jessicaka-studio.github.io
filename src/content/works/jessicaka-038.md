@@ -2,7 +2,9 @@
 title: "jessicaka 038"
 date: 2026-11-03
 kind: short
-platform: none
+platform: youtube
+youtubeId: "JDXluxAfgIM"
+url: https://youtu.be/JDXluxAfgIM
 aspect: "4:5"
 thumb: ../../assets/works/jessicaka-038.jpg
 tools: [ComfyUI]
