@@ -2,7 +2,9 @@
 title: "jessicaka 047"
 date: 2026-11-09
 kind: short
-platform: none
+platform: youtube
+youtubeId: "AbUJE6r4-uc"
+url: https://youtu.be/AbUJE6r4-uc
 aspect: "4:5"
 thumb: ../../assets/works/jessicaka-047.jpg
 tools: [ComfyUI]

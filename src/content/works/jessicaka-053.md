@@ -2,7 +2,9 @@
 title: "jessicaka 053"
 date: 2026-11-10
 kind: short
-platform: none
+platform: youtube
+youtubeId: "M1f7PEiyDqo"
+url: https://youtu.be/M1f7PEiyDqo
 aspect: "4:5"
 thumb: ../../assets/works/jessicaka-053.jpg
 tools: [ComfyUI]
